@@ -9,6 +9,16 @@ import CreateAccount from './screen/CreateAccount';
 import ForgetPassword from './screen/ForgetPassword';
 import OtpVerification from './screen/OtpVerification';
 import MainScreen from './screen/MainScreen';
+import Account from './screen/Account';
+import SplitTunneling from './screen/SplitTunneling';
+import Protocol from './screen/Protocol';
+import Setting from './screen/Setting';
+import Faq from './screen/Faq';
+import Share from './screen/Share';
+import Subscription from './screen/Subscription';
+import Term from './screen/Term';
+import PrivacyPolicy from './screen/PrivacyPolicy';
+import About from './screen/About';
 
 const Stack = createNativeStackNavigator();
 const SplashScreenComponent = () => {
@@ -113,6 +123,86 @@ function App() {
             
             name="MainScreen"
             component={MainScreen}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Account"
+            component={Account}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="SplitTunneling"
+            component={SplitTunneling}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Protocol"
+            component={Protocol}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Setting"
+            component={Setting}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Faq"
+            component={Faq}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Share"
+            component={Share}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Subscription"
+            component={Subscription}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Term"
+            component={Term}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="PrivacyPolicy"
+            component={PrivacyPolicy}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="About"
+            component={About}
           />
         </Stack.Navigator>
       </NavigationContainer>

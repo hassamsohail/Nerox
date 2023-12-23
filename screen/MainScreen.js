@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 
 import {
   View,
@@ -13,6 +13,8 @@ import {
 
 export default function MainScreen({navigation}) {
   const [showMenu, setshowMenu] = React.useState(false);
+  const [connected, setConnected] = useState(false); // Track connection status
+
   const offsetValue = useRef(new Animated.Value(0)).current;
   const scaleValue = useRef(new Animated.Value(1)).current;
 
@@ -30,19 +32,25 @@ export default function MainScreen({navigation}) {
           backgroundColor: '#00091F',
           borderRadius: 20,
         }}>
-        <ImageBackground
+        <View
           style={{
             flex: 1,
-          }}
-          source={require('../assets/Splash.png')}>
+            backgroundColor: '#00091F',
+          }}>
           <View
             style={{
-              flexDirection: 'row',
-              marginTop: 50,
+              width: '87%',
+              alignSelf: 'center',
             }}>
+            <View style={{height: 20}} />
+
             <View
               style={{
-                justifyContent: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+                height: 40,
               }}>
               <Pressable
                 onPress={() => {
@@ -60,170 +68,359 @@ export default function MainScreen({navigation}) {
 
                   setshowMenu(!showMenu);
                 }}>
-                <Text
+                <View
                   style={{
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    // marginTop:10,
-                    color: '#fff',
-                    marginLeft: 10,
+                    alignItems: 'center',
+                    width: 40,
+                    height: 40,
+                    justifyContent: 'center',
+                    borderRadius: 12,
+                    backgroundColor: '#00091F',
                   }}>
-                  Andrew Hale
-                </Text>
+                  <Image
+                    source={require('../assets/Left.png')}
+                    style={{
+                      width: 24,
+                      height: 24,
+                    }}
+                  />
+                </View>
               </Pressable>
+
               <Text
                 style={{
-                  fontSize: 14,
-                  fontWeight: 'bold',
-                  // marginTop:10,
+                  fontSize: 20,
+                  fontWeight: '300',
                   color: '#fff',
-                  marginLeft: 10,
                 }}>
-                Flex Score 638
+                Menu
               </Text>
+              <Pressable
+                onPress={() => {
+                  navigation.goBack();
+                }}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    width: 40,
+                    height: 40,
+                    justifyContent: 'center',
+                    borderRadius: 12,
+                    backgroundColor: '#00091F',
+                  }}></View>
+              </Pressable>
             </View>
-          </View>
-          <View
-            style={{
-              marginTop: 50,
-              marginLeft: 20,
-            }}>
+
+            <View style={{height: 20}} />
             <View
               style={{
-                flexDirection: 'row',
-                // marginTop: 50,
-                // marginLeft:20,
-                // justifyContent:"center"
+                justifyContent: 'center',
                 alignItems: 'center',
+                width: 120,
               }}>
               <View
                 style={{
-                  height: 39,
-                  width: 39,
-                  borderRadius: 5,
-                  backgroundColor: '#fff',
+                  width: 120,
+                  height: 120,
+                  borderRadius: 120,
+                  backgroundColor: 'rgba(79, 79, 86, 0.3)',
                   justifyContent: 'center',
                   alignItems: 'center',
-                }}></View>
+                }}>
+                <Image
+                  source={require('../assets/Prof.png')}
+                  style={{
+                    width: 80,
+                    height: 80,
+                  }}
+                />
+              </View>
+
+              <View style={{height: 20}} />
+
               <Text
                 style={{
-                  fontSize: 18,
-                  marginLeft: 10,
+                  fontSize: 20,
+                  // marginLeft: 10,
                   color: '#fff',
+                }}>
+                Ujala Ak.
+              </Text>
+            </View>
+
+            <View style={{height: 30}} />
+<Pressable
+
+onPress={() => {
+  navigation.navigate('Account');
+}}
+> 
+
+            <View
+              style={{
+                flexDirection: 'row',
+               
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../assets/Acc.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                 
+                }}></Image>
+              <Text
+                style={{
+                  fontSize: 14,
+                  marginLeft: 15,
+                  color: '#fff',
+
+                  fontWeight: '100',
                 }}>
                 My Account
               </Text>
             </View>
+              
+</Pressable>
+<Pressable
+
+onPress={() => {
+  navigation.navigate('SplitTunneling');
+}}
+>
+
+
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 20,
+                marginTop: 30,
                 // marginLeft:20,
                 // justifyContent:"center"
                 alignItems: 'center',
               }}>
-              <View
+              <Image
+                source={require('../assets/Spl.png')}
                 style={{
-                  height: 39,
-                  width: 39,
-                  borderRadius: 5,
-                  backgroundColor: '#fff',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}></View>
+                  height: 24,
+                  width: 24,
+                  // borderRadius: 5,
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
               <Text
                 style={{
-                  fontSize: 18,
-                  marginLeft: 10,
+                  fontSize: 14,
+                  marginLeft: 15,
                   color: '#fff',
+
+                  fontWeight: '100',
                 }}>
-                Master my Money
+                Split Tunneling
               </Text>
             </View>
+            </Pressable>
+            <Pressable
+             onPress={() => {
+              navigation.navigate('Protocol');
+            }}
+            >
+
+         
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 20,
+                marginTop: 30,
                 // marginLeft:20,
                 // justifyContent:"center"
                 alignItems: 'center',
               }}>
-              <View
+              <Image
+                source={require('../assets/Pro.png')}
                 style={{
-                  height: 39,
-                  width: 39,
-                  borderRadius: 5,
-                  backgroundColor: '#fff',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}></View>
+                  height: 24,
+                  width: 24,
+                  // borderRadius: 5,
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
               <Text
                 style={{
-                  fontSize: 18,
-                  marginLeft: 10,
+                  fontSize: 14,
+                  marginLeft: 15,
                   color: '#fff',
+
+                  fontWeight: '100',
                 }}>
-                Scenario Simulator
+                Protocol
               </Text>
             </View>
+            </Pressable>
+            <Pressable
+             onPress={() => {
+              navigation.navigate('Setting');
+            }}
+            >
+
+          
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: 20,
+                marginTop: 30,
                 // marginLeft:20,
                 // justifyContent:"center"
                 alignItems: 'center',
               }}>
-              <View
+              <Image
+                source={require('../assets/Set.png')}
                 style={{
-                  height: 39,
-                  width: 39,
-                  borderRadius: 5,
-                  backgroundColor: '#fff',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}></View>
+                  height: 24,
+                  width: 24,
+                  // borderRadius: 5,
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
               <Text
                 style={{
-                  fontSize: 18,
-                  marginLeft: 10,
+                  fontSize: 14,
+                  marginLeft: 15,
                   color: '#fff',
+
+                  fontWeight: '100',
                 }}>
-                The CrediFlex Vision
+                Setting
               </Text>
             </View>
-          </View>
+            </Pressable>
+            <Pressable
+            
+            onPress={() => {
+              navigation.navigate('Faq');
+            }}
+            >
+
+         
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 30,
+                // marginLeft:20,
+                // justifyContent:"center"
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../assets/Faq.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                  // borderRadius: 5,
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
+              <Text
+                style={{
+                  fontSize: 14,
+                  marginLeft: 15,
+                  color: '#fff',
+
+                  fontWeight: '100',
+                }}>
+                FAQ
+              </Text>
+            </View>
+            </Pressable>
+            <Pressable
+             onPress={() => {
+              navigation.navigate('Share');
+            }}
+            
+            >
+
+         
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 30,
+                // marginLeft:20,
+                // justifyContent:"center"
+                alignItems: 'center',
+              }}>
+              <Image
+                source={require('../assets/Sha.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                  // borderRadius: 5,
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
+              <Text
+                style={{
+                  fontSize: 14,
+                  marginLeft: 15,
+                  color: '#fff',
+
+                  fontWeight: '100',
+                }}>
+                Share
+              </Text>
+            </View>
+            </Pressable>
 
           <View
             style={{
-              height: '35%',
+              height: 55,
             }}
           />
-          <View
-            style={{
-              marginLeft: 32,
 
-              alignItems: 'center',
-              flexDirection: 'row',
+<Pressable
+            style={{
+              width: 327,
+            }}
+            onPress={() => {
+              navigation.navigate('Subscription');
             }}>
-            <TouchableOpacity
+            <ImageBackground
+              source={require('../assets/btn.png')}
               style={{
-                flexDirection: 'row',
-              }}
-              onPress={() => {
-                navigation.navigate('Login2');
+                width: '100%',
+                height: 68,
+
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'center',
+                flexDirection:"row"
               }}>
               <Text
                 style={{
-                  fontSize: 18,
-                  marginLeft: 10,
+                  fontSize: 14,
                   color: '#fff',
+                  fontWeight: '500',
+                  // textAlign: 'center',
                 }}>
-                Logout
+                Get Premium Account
               </Text>
-            </TouchableOpacity>
+              <Image
+                source={require('../assets/crown.png')}
+                style={{
+                  height: 40,
+                  width: 40,
+                  // borderRadius: 5,
+                  marginLeft:20
+                  // backgroundColor: '#fff',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                }}></Image>
+            </ImageBackground>
+          </Pressable>
+
           </View>
-        </ImageBackground>
+
+        </View>
         <Animated.View
           style={{
             flexGrow: 1,
@@ -330,109 +527,257 @@ export default function MainScreen({navigation}) {
               </View>
               <View style={{height: 20}} />
               {/* Map Image */}
-              <Image
-                source={require('../assets/map.png')}
-                style={{
-                  width: '100%',
-                  height: 200,
-                }}
-              />
-              {/* Smart Location component */}
 
-              <View
-                style={{
-                  width: '100%',
-                  height: 88,
-                  backgroundColor: 'rgba(46, 46, 61, 0.5)',
-                  borderWidth: 1,
-                  borderColor: '#202023',
-                  marginTop: -25,
-                  borderRadius: 20,
-                  padding: 12,
-                }}>
+              {!connected ? (
+                <Image
+                  source={require('../assets/map.png')}
+                  style={{
+                    width: '100%',
+                    height: 200,
+                  }}
+                />
+              ) : null}
+
+              {connected ? (
+                <View>
+                  <View style={{height: 20}} />
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      fontWeight: '100',
+                      color: '#A1A1AC',
+                      alignSelf: 'center',
+                      marginTop: 4,
+                    }}>
+                    Connecting Time
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 32,
+                      fontWeight: '400',
+                      color: '#fff',
+                      alignSelf: 'center',
+                      marginTop: 4,
+                    }}>
+                    00:30:26
+                  </Text>
+                </View>
+              ) : null}
+
+              {/* Smart Location component */}
+              {!connected ? (
                 <View
                   style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
+                    width: '100%',
+
+                    height: 88,
+                    backgroundColor: 'rgba(46, 46, 61, 0.5)',
+                    borderWidth: 1,
+                    borderColor: '#202023',
+                    marginTop: -25,
+                    borderRadius: 20,
+                    padding: 12,
                   }}>
                   <View
                     style={{
                       flexDirection: 'row',
-                      // justifyContent:"space-between",
+                      justifyContent: 'space-between',
                       alignItems: 'center',
                     }}>
                     <View
                       style={{
-                        height: 64,
-                        width: 64,
-                        borderRadius: 12,
-                        backgroundColor: '#00091F',
-                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        // justifyContent:"space-between",
                         alignItems: 'center',
                       }}>
-                      <Image
-                        source={require('../assets/Defaultflag.png')}
+                      <View
                         style={{
-                          width: 48,
-                          height: 30,
-                        }}
-                      />
+                          height: 64,
+                          width: 64,
+                          borderRadius: 12,
+                          backgroundColor: '#00091F',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          source={require('../assets/Defaultflag.png')}
+                          style={{
+                            width: 48,
+                            height: 30,
+                          }}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          justifyContent: 'center',
+                          marginLeft: 10,
+                        }}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '400',
+                            color: '#fff',
+                          }}>
+                          Smart Location
+                        </Text>
+
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontWeight: '100',
+                            color: '#A1A1AC',
+                            marginTop: 4,
+                          }}>
+                          Fastest Server
+                        </Text>
+                      </View>
                     </View>
+                    <Image
+                      source={require('../assets/Right.png')}
+                      style={{
+                        width: 24,
+                        height: 24,
+                      }}
+                    />
+                  </View>
+                </View>
+              ) : (
+                <View
+                  style={{
+                    width: '100%',
+                    height: 88,
+                    backgroundColor: 'rgba(46, 46, 61, 0.5)',
+                    borderWidth: 1,
+                    borderColor: '#202023',
+                    marginTop: 20,
+                    borderRadius: 20,
+                    padding: 12,
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
                     <View
                       style={{
-                        justifyContent: 'center',
-                        marginLeft: 10,
+                        flexDirection: 'row',
+                        // justifyContent:"space-between",
+                        alignItems: 'center',
                       }}>
-                      <Text
+                      <View
                         style={{
-                          fontSize: 16,
-                          fontWeight: '400',
-                          color: '#fff',
+                          height: 64,
+                          width: 64,
+                          borderRadius: 12,
+                          backgroundColor: '#00091F',
+                          justifyContent: 'center',
+                          alignItems: 'center',
                         }}>
-                        Smart Location
-                      </Text>
+                        <Image
+                          source={require('../assets/US.png')}
+                          style={{
+                            width: 48,
+                            height: 30,
+                          }}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          justifyContent: 'center',
+                          marginLeft: 10,
+                        }}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '400',
+                            color: '#fff',
+                          }}>
+                          United States
+                        </Text>
 
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          fontWeight: '100',
-                          color: '#A1A1AC',
-                          marginTop: 4,
-                        }}>
-                        Fastest Server
-                      </Text>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontWeight: '100',
+                            color: '#A1A1AC',
+                            marginTop: 4,
+                          }}>
+                          IP 37.120.202.186
+                        </Text>
+                      </View>
                     </View>
+                    <Image
+                      source={require('../assets/Right.png')}
+                      style={{
+                        width: 24,
+                        height: 24,
+                      }}
+                    />
                   </View>
-                  <Image
-                    source={require('../assets/Right.png')}
-                    style={{
-                      width: 24,
-                      height: 24,
-                    }}
-                  />
                 </View>
-              </View>
+              )}
               <View style={{height: 60}} />
 
               {/* Disconnected button */}
-              <Image
-                source={require('../assets/Disconnected.png')}
-                style={{
-                  width: 260,
-                  alignSelf: 'center',
-                  height: 260,
-                }}
-              />
+              {connected ? (
+                <View>
+                  <View style={{height: 70}} />
+
+                  <Pressable
+                    onPress={() => {
+                      setConnected(false);
+
+                      // Logic to handle connecting
+                    }}>
+                    <Image
+                      source={require('../assets/Connected.png')}
+                      style={{
+                        width: 260,
+
+                        alignSelf: 'center',
+                        height: 260,
+                      }}
+                    />
+                  </Pressable>
+                </View>
+              ) : (
+                <Pressable
+                  onPress={() => {
+                    // Logic to handle connecting
+                    setConnected(true);
+                  }}>
+                  <Image
+                    source={require('../assets/Disconnected.png')}
+                    style={{
+                      width: 260,
+                      alignSelf: 'center',
+
+                      height: 260,
+                    }}
+                  />
+                </Pressable>
+              )}
               {/* Status Disconnected (Tap to Connect) */}
-              <Image
-                source={require('../assets/Tap_to_Connect.png')}
-                style={{
-                  width: 136,
-                  alignSelf: 'center',
-                  height: 20,
-                }}
-              />
+              {!connected ? (
+                <Image
+                  source={require('../assets/Tap_to_Connect.png')}
+                  style={{
+                    width: 136,
+                    alignSelf: 'center',
+                    height: 20,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../assets/Connected_Status.png')}
+                  style={{
+                    width: 105,
+                    alignSelf: 'center',
+                    height: 20,
+                  }}
+                />
+              )}
             </View>
           </ImageBackground>
         </Animated.View>
