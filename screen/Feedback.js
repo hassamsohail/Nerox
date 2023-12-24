@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Assuming you're using FontAwesome, you can change it to your desired icon library
 
-export default function Faq({navigation}) {
+export default function Feedback({navigation}) {
   const tabs = ['Connection', 'Login', 'Payment', 'Premium']; // Add your tab names here
   const [activeTab, setActiveTab] = useState(0);
 
@@ -23,57 +23,51 @@ export default function Faq({navigation}) {
   const data = [
     {
       key: '1',
-      text: 'Why i need a VPN?',
+      text: 'Can’t connect',
       imageSource: require('../assets/Right.png'),
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
+      text1: "Still can't connect even though I've followed the instructions",
       text2:
         'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
     },
     {
       key: '2',
-      text: 'Is it safe?',
+      text: 'Speed to slow',
       imageSource: require('../assets/Right.png'),
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
+      text1: "Still can't connect even though I've followed the instructions",
       text2:
         'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
     },
     {
       key: '3',
-      text: 'How to use NEROX',
+      text: 'Auto disconnected',
       imageSource: require('../assets/Right.png'),
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
+      text1: "Still can't connect even though I've followed the instructions",
       text2:
         'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
     },
 
     {
       key: '4',
-      text: 'Can’t connect, not stable or speed is slow',
+      text: 'Streaming',
       imageSource: require('../assets/Right.png'),
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
-      text2:
-        'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
+      text1: "Still can't connect even though I've followed the instructions",
     },
     {
       key: '5',
-      text: 'How to switch server location?',
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
-      text2:
-        'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
+      text: 'Gaming',
+      text1: "Still can't connect even though I've followed the instructions",
       imageSource: require('../assets/Right.png'),
     },
     {
       key: '6',
-      text: 'Don’t have authority / Can’t press OK to access website/apps?',
-      text1:
-        'When NEROX is connecting it presents a VPN dialog for the user to give permission to start the VPN. ',
-      text2:
-        'If you cannot click OK or check the "I trust this application checkbox," there might be another app on top of the dialog. To avoid this problem, close all apps that may be running in the background.',
+      text: 'Payment',
+      text1: "Still can't connect even though I've followed the instructions",
+      imageSource: require('../assets/Right.png'),
+    },
+    {
+      key: '7',
+      text: 'Other',
+      text1: "Still can't connect even though I've followed the instructions",
       imageSource: require('../assets/Right.png'),
     },
   ];
@@ -134,7 +128,7 @@ export default function Faq({navigation}) {
                 fontWeight: '300',
                 color: '#fff',
               }}>
-              FAQ
+              Feedback
             </Text>
             <Pressable
               onPress={() => {
@@ -153,47 +147,25 @@ export default function Faq({navigation}) {
           </View>
           <View style={{height: 20}} />
 
-          <View style={styles.container}>
-            <Icon name="search" size={20} color="#A1A1AC" style={styles.icon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Search for keywords..."
-              placeholderTextColor="#A1A1AC"
-            />
-          </View>
-
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.tabBarContainer}>
-            {tabs.map((tab, index) => (
-              <TouchableOpacity
-                key={index}
-                onPress={() => handleTabPress(index)}
-                style={[
-                  styles.tab,
-                  {
-                    backgroundColor:
-                      activeTab === index ? '#32342C' : '#171B2E',
-                  },
-                  {borderColor: activeTab === index ? '#A4D616' : '#4A4A61'},
-                  {
-                    
-                  }
-                ]}>
-                <Text style={[
-
-                  styles.tabText,
-                  {
-                    color: activeTab === index? "#6B8F04":"#ABABB1"
-                  }
-                ]
-                  
-                
-                }>{tab}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+          <Image
+            source={require('../assets/Play.png')}
+            style={{
+              width: 64,
+              alignSelf: 'center',
+              height: 64,
+              // opacity:0.5
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: '400',
+              color: '#fff',
+              textAlign: 'center',
+              paddingHorizontal: '25%',
+            }}>
+            What would you like us to improve?
+          </Text>
 
           <View style={{height: 20}} />
 
@@ -201,7 +173,7 @@ export default function Faq({navigation}) {
             style={{
               width: '100%',
               backgroundColor: '#171B2E',
-              paddingTop: 15,
+              paddingTop: 18,
             }}>
             <View
               style={{
@@ -212,7 +184,7 @@ export default function Faq({navigation}) {
                 <Pressable
                   key={index}
                   onPress={() => {
-                    navigation.navigate('FaqDetail', {
+                    navigation.navigate('FeedbackDetail', {
                       title: item.text,
                       text1: item.text1,
                       text2: item.text2,
@@ -244,7 +216,7 @@ export default function Faq({navigation}) {
                         }}
                       />
                     </View>
-                    <View style={{height: 15}} />
+                    <View style={{height: 18}} />
 
                     <View
                       style={{
@@ -254,38 +226,13 @@ export default function Faq({navigation}) {
                       }}
                     />
 
-                    <View style={{height: 15}} />
+                    <View style={{height: 18}} />
                   </View>
                 </Pressable>
               ))}
             </View>
           </View>
           <View style={{height: 24}} />
-
-          <Pressable
-          onPress={()=>{
-            navigation.navigate("Feedback")
-          }}
-          >
-            <Image
-              source={require('../assets/More.png')}
-              style={{
-                width: 48,
-                alignSelf: 'center',
-                height: 48,
-                // opacity:0.5
-              }}
-            />
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '200',
-                color: '#fff',
-                textAlign: 'center',
-              }}>
-              More questions?
-            </Text>
-          </Pressable>
         </View>
       </View>
     </ScrollView>

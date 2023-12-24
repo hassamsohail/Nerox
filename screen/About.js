@@ -61,7 +61,6 @@ export default function PrivacyPolicy({navigation}) {
                 />
               </View>
             </Pressable>
-
             <Text
               style={{
                 fontSize: 20,
@@ -86,55 +85,54 @@ export default function PrivacyPolicy({navigation}) {
             </Pressable>
           </View>
           <View style={{height: 100}} />
-       
+
           <Image
-                  source={require('../assets/Logo2.png')}
-                  style={{
-                    width:100,
-                    height: 171,
-                    alignSelf:"center"
-                  }}
-                />
- <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '100',
-                color: '#ABABB1',
-                textAlign:"center"
-              }}>
+            source={require('../assets/Logo2.png')}
+            style={{
+              width: 100,
+              height: 171,
+              alignSelf: 'center',
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '100',
+              color: '#ABABB1',
+              textAlign: 'center',
+            }}>
             Version 1.0.0
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '100',
-                color: '#ABABB1',
-                textAlign:"center"
-              }}>
-           Build 12249801301
-            </Text>
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '100',
+              color: '#ABABB1',
+              textAlign: 'center',
+            }}>
+            Build 12249801301
+          </Text>
 
-            <View style={{height: 250}} />
+          <View style={{height: 250}} />
 
-
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '100',
-                color: '#ABABB1',
-                textAlign:"center"
-              }}>
-           www.NEROX.com
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '100',
-                color: '#ABABB1',
-                textAlign:"center"
-              }}>
-         Copyright 2023 All Rights Reserved
-            </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '100',
+              color: '#ABABB1',
+              textAlign: 'center',
+            }}>
+            www.NEROX.com
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '100',
+              color: '#ABABB1',
+              textAlign: 'center',
+            }}>
+            Copyright 2023 All Rights Reserved
+          </Text>
         </View>
       </View>
     </ScrollView>

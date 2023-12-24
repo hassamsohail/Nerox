@@ -19,6 +19,9 @@ import Subscription from './screen/Subscription';
 import Term from './screen/Term';
 import PrivacyPolicy from './screen/PrivacyPolicy';
 import About from './screen/About';
+import FaqDetail from './screen/FaqDetail';
+import Feedback from './screen/Feedback';
+import FeedbackDetail from './screen/Feedbackdetail';
 
 const Stack = createNativeStackNavigator();
 const SplashScreenComponent = () => {
@@ -203,6 +206,30 @@ function App() {
             
             name="About"
             component={About}
+          />
+            <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="FaqDetail"
+            component={FaqDetail}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Feedback"
+            component={Feedback}
+          />
+           <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="FeedbackDetail"
+            component={FeedbackDetail}
           />
         </Stack.Navigator>
       </NavigationContainer>

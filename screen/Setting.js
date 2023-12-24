@@ -601,6 +601,8 @@ export default function Setting({navigation}) {
                   style={{
                     width: 24,
                     height: 24,
+                    opacity:0.5
+
                   }}
                 />
               </View>
@@ -641,6 +643,8 @@ export default function Setting({navigation}) {
                   source={require('../assets/Right.png')}
                   style={{
                     width: 24,
+                    opacity:0.5
+                    ,
                     height: 24,
                   }}
                 />
@@ -682,6 +686,8 @@ export default function Setting({navigation}) {
                   style={{
                     width: 24,
                     height: 24,
+                    opacity:0.5
+
                   }}
                 />
               </View>

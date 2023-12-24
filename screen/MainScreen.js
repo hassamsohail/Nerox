@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 
 import {
   View,
   Text,
   Image,
   TouchableOpacity,
-  StatusBar,
+  Modal,
   ImageBackground,
   Pressable,
   Animated,
@@ -14,10 +14,28 @@ import {
 export default function MainScreen({navigation}) {
   const [showMenu, setshowMenu] = React.useState(false);
   const [connected, setConnected] = useState(false); // Track connection status
+  const [connectingTime, setConnectingTime] = useState(0);
 
   const offsetValue = useRef(new Animated.Value(0)).current;
   const scaleValue = useRef(new Animated.Value(1)).current;
+  useEffect(() => {
+    let interval;
+    if (connected) {
+      interval = setInterval(() => {
+        setConnectingTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [connected]);
 
+  const formatTime = (timeInSeconds) => {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
   return (
     <View
       style={{
@@ -149,277 +167,327 @@ export default function MainScreen({navigation}) {
             </View>
 
             <View style={{height: 30}} />
-<Pressable
+            <Pressable
+              onPress={() => {
+                navigation.navigate('Account');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-onPress={() => {
-  navigation.navigate('Account');
-}}
-> 
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-            <View
-              style={{
-                flexDirection: 'row',
-               
-                alignItems: 'center',
+                setshowMenu(!showMenu);
               }}>
-              <Image
-                source={require('../assets/Acc.png')}
+              <View
                 style={{
-                  height: 24,
-                  width: 24,
-                 
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
+                  flexDirection: 'row',
 
-                  fontWeight: '100',
+                  alignItems: 'center',
                 }}>
-                My Account
-              </Text>
-            </View>
-              
-</Pressable>
-<Pressable
+                <Image
+                  source={require('../assets/Acc.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
 
-onPress={() => {
-  navigation.navigate('SplitTunneling');
-}}
->
-
-
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 30,
-                // marginLeft:20,
-                // justifyContent:"center"
-                alignItems: 'center',
-              }}>
-              <Image
-                source={require('../assets/Spl.png')}
-                style={{
-                  height: 24,
-                  width: 24,
-                  // borderRadius: 5,
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
-
-                  fontWeight: '100',
-                }}>
-                Split Tunneling
-              </Text>
-            </View>
+                    fontWeight: '100',
+                  }}>
+                  My Account
+                </Text>
+              </View>
             </Pressable>
             <Pressable
-             onPress={() => {
-              navigation.navigate('Protocol');
-            }}
-            >
+              onPress={() => {
+                navigation.navigate('SplitTunneling');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-         
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 30,
-                // marginLeft:20,
-                // justifyContent:"center"
-                alignItems: 'center',
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                setshowMenu(!showMenu);
               }}>
-              <Image
-                source={require('../assets/Pro.png')}
+              <View
                 style={{
-                  height: 24,
-                  width: 24,
-                  // borderRadius: 5,
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
-
-                  fontWeight: '100',
+                  flexDirection: 'row',
+                  marginTop: 30,
+                  // marginLeft:20,
+                  // justifyContent:"center"
+                  alignItems: 'center',
                 }}>
-                Protocol
-              </Text>
-            </View>
+                <Image
+                  source={require('../assets/Spl.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                    // borderRadius: 5,
+                    // backgroundColor: '#fff',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
+
+                    fontWeight: '100',
+                  }}>
+                  Split Tunneling
+                </Text>
+              </View>
             </Pressable>
             <Pressable
-             onPress={() => {
-              navigation.navigate('Setting');
-            }}
-            >
+              onPress={() => {
+                navigation.navigate('Protocol');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-          
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 30,
-                // marginLeft:20,
-                // justifyContent:"center"
-                alignItems: 'center',
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                setshowMenu(!showMenu);
               }}>
-              <Image
-                source={require('../assets/Set.png')}
+              <View
                 style={{
-                  height: 24,
-                  width: 24,
-                  // borderRadius: 5,
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
-
-                  fontWeight: '100',
+                  flexDirection: 'row',
+                  marginTop: 30,
+                  // marginLeft:20,
+                  // justifyContent:"center"
+                  alignItems: 'center',
                 }}>
-                Setting
-              </Text>
-            </View>
+                <Image
+                  source={require('../assets/Pro.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                    // borderRadius: 5,
+                    // backgroundColor: '#fff',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
+
+                    fontWeight: '100',
+                  }}>
+                  Protocol
+                </Text>
+              </View>
             </Pressable>
             <Pressable
-            
-            onPress={() => {
-              navigation.navigate('Faq');
-            }}
-            >
+              onPress={() => {
+                navigation.navigate('Setting');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-         
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 30,
-                // marginLeft:20,
-                // justifyContent:"center"
-                alignItems: 'center',
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                setshowMenu(!showMenu);
               }}>
-              <Image
-                source={require('../assets/Faq.png')}
+              <View
                 style={{
-                  height: 24,
-                  width: 24,
-                  // borderRadius: 5,
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
-
-                  fontWeight: '100',
+                  flexDirection: 'row',
+                  marginTop: 30,
+                  // marginLeft:20,
+                  // justifyContent:"center"
+                  alignItems: 'center',
                 }}>
-                FAQ
-              </Text>
-            </View>
+                <Image
+                  source={require('../assets/Set.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                    // borderRadius: 5,
+                    // backgroundColor: '#fff',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
+
+                    fontWeight: '100',
+                  }}>
+                  Setting
+                </Text>
+              </View>
             </Pressable>
             <Pressable
-             onPress={() => {
-              navigation.navigate('Share');
-            }}
-            
-            >
+              onPress={() => {
+                navigation.navigate('Faq');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
 
-         
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 30,
-                // marginLeft:20,
-                // justifyContent:"center"
-                alignItems: 'center',
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                setshowMenu(!showMenu);
               }}>
-              <Image
-                source={require('../assets/Sha.png')}
+              <View
                 style={{
-                  height: 24,
-                  width: 24,
-                  // borderRadius: 5,
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginLeft: 15,
-                  color: '#fff',
-
-                  fontWeight: '100',
+                  flexDirection: 'row',
+                  marginTop: 30,
+                  // marginLeft:20,
+                  // justifyContent:"center"
+                  alignItems: 'center',
                 }}>
-                Share
-              </Text>
-            </View>
+                <Image
+                  source={require('../assets/Faq.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                    // borderRadius: 5,
+                    // backgroundColor: '#fff',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
+
+                    fontWeight: '100',
+                  }}>
+                  FAQ
+                </Text>
+              </View>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('Share');
+                Animated.timing(scaleValue, {
+                  toValue: showMenu ? 1 : 0.7,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                Animated.timing(offsetValue, {
+                  toValue: showMenu ? 0 : 290,
+                  duration: 300,
+                  useNativeDriver: true,
+                }).start();
+
+                setshowMenu(!showMenu);
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 30,
+                  // marginLeft:20,
+                  // justifyContent:"center"
+                  alignItems: 'center',
+                }}>
+                <Image
+                  source={require('../assets/Sha.png')}
+                  style={{
+                    height: 24,
+                    width: 24,
+                    // borderRadius: 5,
+                    // backgroundColor: '#fff',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
+                  }}></Image>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 15,
+                    color: '#fff',
+
+                    fontWeight: '100',
+                  }}>
+                  Share
+                </Text>
+              </View>
             </Pressable>
 
-          <View
-            style={{
-              height: 55,
-            }}
-          />
-
-<Pressable
-            style={{
-              width: 327,
-            }}
-            onPress={() => {
-              navigation.navigate('Subscription');
-            }}>
-            <ImageBackground
-              source={require('../assets/btn.png')}
+            <View
               style={{
-                width: '100%',
-                height: 68,
+                height: 55,
+              }}
+            />
 
-                justifyContent: 'center',
-                alignItems: 'center',
-                alignSelf: 'center',
-                flexDirection:"row"
+            <Pressable
+              style={{
+                width: 327,
+              }}
+              onPress={() => {
+                navigation.navigate('Subscription');
               }}>
-              <Text
+              <ImageBackground
+                source={require('../assets/btn.png')}
                 style={{
-                  fontSize: 14,
-                  color: '#fff',
-                  fontWeight: '500',
-                  // textAlign: 'center',
-                }}>
-                Get Premium Account
-              </Text>
-              <Image
-                source={require('../assets/crown.png')}
-                style={{
-                  height: 40,
-                  width: 40,
-                  // borderRadius: 5,
-                  marginLeft:20
-                  // backgroundColor: '#fff',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                }}></Image>
-            </ImageBackground>
-          </Pressable>
+                  width: '100%',
+                  height: 68,
 
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                  flexDirection: 'row',
+                }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#fff',
+                    fontWeight: '500',
+                    // textAlign: 'center',
+                  }}>
+                  Get Premium Account
+                </Text>
+                <Image
+                  source={require('../assets/crown.png')}
+                  style={{
+                    height: 40,
+                    width: 40,
+                    // borderRadius: 5,
+                    marginLeft: 20,
+                  }}></Image>
+              </ImageBackground>
+            </Pressable>
           </View>
-
         </View>
         <Animated.View
           style={{
@@ -559,7 +627,8 @@ onPress={() => {
                       alignSelf: 'center',
                       marginTop: 4,
                     }}>
-                    00:30:26
+                             {formatTime(connectingTime)}
+
                   </Text>
                 </View>
               ) : null}
@@ -717,17 +786,125 @@ onPress={() => {
                   </View>
                 </View>
               )}
+               {connected ? (
+              <View>
+                <View style={{height: 20}} />
+
+                <View
+                  style={{
+                    width: '80%',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{
+                      // width:"80%",
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                       <Image
+                  source={require('../assets/Download.png')}
+                  style={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
+                <View
+                style={{
+                  marginLeft:5, justifyContent:"center"
+                }}
+                >
+
+             
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        fontWeight: '300',
+                        color: '#A1A1AC',
+                        // alignSelf: 'center',
+                        // marginTop: 4,
+                      }}>
+                     Download
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        fontWeight: '500',
+                        color: '#fff',
+                        // alignSelf: 'center',
+                        // marginTop: 4,
+                      }}>
+                     245 KB/s
+                    </Text>
+                    </View>
+                  </View>
+               <View
+               
+               style={{
+                width:1, height:34, justifyContent:"center", alignItems:"center", backgroundColor:"#202023"
+               }}
+               >
+
+               </View>
+               <View
+                    style={{
+                      // width:"80%",
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                       <Image
+                  source={require('../assets/Upload.png')}
+                  style={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
+                <View
+                style={{
+                  marginLeft:5, justifyContent:"center"
+                }}
+                >
+
+             
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        fontWeight: '300',
+                        color: '#A1A1AC',
+                        // alignSelf: 'center',
+                        // marginTop: 4,
+                      }}>
+                     Upload
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        fontWeight: '500',
+                        color: '#fff',
+                        // alignSelf: 'center',
+                        // marginTop: 4,
+                      }}>
+                    176 KB/s
+                    </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>):null}
               <View style={{height: 60}} />
 
               {/* Disconnected button */}
               {connected ? (
                 <View>
-                  <View style={{height: 70}} />
+                  <View style={{height: 12}} />
 
                   <Pressable
                     onPress={() => {
                       setConnected(false);
-
+                      setConnectingTime(0); 
                       // Logic to handle connecting
                     }}>
                     <Image
