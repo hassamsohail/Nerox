@@ -9,6 +9,7 @@ import {
   ImageBackground,
   Pressable,
   Animated,
+  StyleSheet,
 } from 'react-native';
 
 export default function MainScreen({navigation}) {
@@ -22,7 +23,7 @@ export default function MainScreen({navigation}) {
     let interval;
     if (connected) {
       interval = setInterval(() => {
-        setConnectingTime((prevTime) => prevTime + 1);
+        setConnectingTime(prevTime => prevTime + 1);
       }, 1000);
     }
     return () => {
@@ -30,11 +31,28 @@ export default function MainScreen({navigation}) {
     };
   }, [connected]);
 
-  const formatTime = (timeInSeconds) => {
+  const formatTime = timeInSeconds => {
     const hours = Math.floor(timeInSeconds / 3600);
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = timeInSeconds % 60;
-    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${
+      seconds < 10 ? '0' : ''
+    }${seconds}`;
+  };
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
+  const handleDisconnect = () => {
+    openModal();
+  };
+
+  const confirmDisconnect = () => {
+    setConnected(false);
+    setConnectingTime(0);
+    closeModal();
+
+    navigation.navigate("ConnectionReport")
   };
   return (
     <View
@@ -572,7 +590,7 @@ export default function MainScreen({navigation}) {
                 </Text>
                 <Pressable
                   onPress={() => {
-                    navigation.goBack();
+                    navigation.navigate("Subscription");
                   }}>
                   <View
                     style={{
@@ -627,8 +645,7 @@ export default function MainScreen({navigation}) {
                       alignSelf: 'center',
                       marginTop: 4,
                     }}>
-                             {formatTime(connectingTime)}
-
+                    {formatTime(connectingTime)}
                   </Text>
                 </View>
               ) : null}
@@ -786,127 +803,137 @@ export default function MainScreen({navigation}) {
                   </View>
                 </View>
               )}
-               {connected ? (
-              <View>
-                <View style={{height: 20}} />
+              {connected ? (
+                <View>
+                  <View style={{height: 20}} />
 
-                <View
-                  style={{
-                    width: '80%',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    alignSelf: 'center',
-                    justifyContent: 'space-between',
-                  }}>
                   <View
                     style={{
-                      // width:"80%",
+                      width: '80%',
                       flexDirection: 'row',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      alignSelf: 'center',
+                      justifyContent: 'space-between',
                     }}>
-                       <Image
-                  source={require('../assets/Download.png')}
-                  style={{
-                    width: 24,
-                    height: 24,
-                  }}
-                />
-                <View
-                style={{
-                  marginLeft:5, justifyContent:"center"
-                }}
-                >
-
-             
-                    <Text
+                    <View
                       style={{
-                        fontSize: 12,
-                        fontWeight: '300',
-                        color: '#A1A1AC',
-                        // alignSelf: 'center',
-                        // marginTop: 4,
+                        // width:"80%",
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}>
-                     Download
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        fontWeight: '500',
-                        color: '#fff',
-                        // alignSelf: 'center',
-                        // marginTop: 4,
-                      }}>
-                     245 KB/s
-                    </Text>
+                      <Image
+                        source={require('../assets/Download.png')}
+                        style={{
+                          width: 24,
+                          height: 24,
+                        }}
+                      />
+                      <View
+                        style={{
+                          marginLeft: 5,
+                          justifyContent: 'center',
+                        }}>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontWeight: '300',
+                            color: '#A1A1AC',
+                            // alignSelf: 'center',
+                            // marginTop: 4,
+                          }}>
+                          Download
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            fontWeight: '500',
+                            color: '#fff',
+                            // alignSelf: 'center',
+                            // marginTop: 4,
+                          }}>
+                          245 KB/s
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-               <View
-               
-               style={{
-                width:1, height:34, justifyContent:"center", alignItems:"center", backgroundColor:"#202023"
-               }}
-               >
-
-               </View>
-               <View
-                    style={{
-                      // width:"80%",
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                       <Image
-                  source={require('../assets/Upload.png')}
-                  style={{
-                    width: 24,
-                    height: 24,
-                  }}
-                />
-                <View
-                style={{
-                  marginLeft:5, justifyContent:"center"
-                }}
-                >
-
-             
-                    <Text
+                    <View
                       style={{
-                        fontSize: 12,
-                        fontWeight: '300',
-                        color: '#A1A1AC',
-                        // alignSelf: 'center',
-                        // marginTop: 4,
-                      }}>
-                     Upload
-                    </Text>
-                    <Text
+                        width: 1,
+                        height: 34,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#202023',
+                      }}></View>
+                    <View
                       style={{
-                        fontSize: 14,
-                        fontWeight: '500',
-                        color: '#fff',
-                        // alignSelf: 'center',
-                        // marginTop: 4,
+                        // width:"80%",
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}>
-                    176 KB/s
-                    </Text>
+                      <Image
+                        source={require('../assets/Upload.png')}
+                        style={{
+                          width: 24,
+                          height: 24,
+                        }}
+                      />
+                      <View
+                        style={{
+                          marginLeft: 5,
+                          justifyContent: 'center',
+                        }}>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            fontWeight: '300',
+                            color: '#A1A1AC',
+                            // alignSelf: 'center',
+                            // marginTop: 4,
+                          }}>
+                          Upload
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            fontWeight: '500',
+                            color: '#fff',
+                            // alignSelf: 'center',
+                            // marginTop: 4,
+                          }}>
+                          176 KB/s
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>):null}
+              ) : null}
               <View style={{height: 60}} />
 
               {/* Disconnected button */}
-              {connected ? (
+              {!connected ? (
+                <View>
+                  <Pressable
+                    onPress={() => {
+                      // Logic to handle connecting
+                      setConnected(true);
+                    }}>
+                    <Image
+                      source={require('../assets/Disconnected.png')}
+                      style={{
+                        width: 260,
+                        alignSelf: 'center',
+
+                        height: 260,
+                      }}
+                    />
+                  </Pressable>
+                </View>
+              ) : (
                 <View>
                   <View style={{height: 12}} />
 
-                  <Pressable
-                    onPress={() => {
-                      setConnected(false);
-                      setConnectingTime(0); 
-                      // Logic to handle connecting
-                    }}>
+                  <Pressable onPress={handleDisconnect}>
                     <Image
                       source={require('../assets/Connected.png')}
                       style={{
@@ -917,24 +944,67 @@ export default function MainScreen({navigation}) {
                       }}
                     />
                   </Pressable>
-                </View>
-              ) : (
-                <Pressable
-                  onPress={() => {
-                    // Logic to handle connecting
-                    setConnected(true);
-                  }}>
-                  <Image
-                    source={require('../assets/Disconnected.png')}
-                    style={{
-                      width: 260,
-                      alignSelf: 'center',
+                  <Modal
+                    transparent={true}
+                    animationType="slide"
+                    visible={modalVisible}
+                    onRequestClose={closeModal}>
+                    <View style={styles.overlay}>
+                      <View style={styles.modal}>
+                        <Text
+                          style={{
+                            fontSize: 24,
+                            fontWeight: '400',
+                            color: '#fff',
+                          }}>
+                          Disconnect
+                        </Text>
+                        <View style={{height: 20}} />
 
-                      height: 260,
-                    }}
-                  />
-                </Pressable>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            fontWeight: '200',
+                            color: '#A1A1AC',
+                          }}>
+                          Are you sure to disconnect?
+                        </Text>
+                        <View style={{height: 20}} />
+
+                        <Pressable
+                          style={{
+                            width: 279,
+                            alignSelf: 'center',
+                          }}
+                          onPress={confirmDisconnect}>
+                          <ImageBackground
+                            source={require('../assets/Dis.png')}
+                            style={{
+                              width: '100%',
+                              height: 56,
+
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              alignSelf: 'center',
+                            }}></ImageBackground>
+                        </Pressable>
+                        <View style={{height: 30}} />
+                        <Pressable onPress={closeModal}>
+                          <Text
+                            style={{
+                              fontSize: 14,
+                              fontWeight: '400',
+                              color: '#fff',
+                            }}>
+                            Cancel
+                          </Text>
+                        </Pressable>
+                      </View>
+                    </View>
+                  </Modal>
+                </View>
               )}
+
               {/* Status Disconnected (Tap to Connect) */}
               {!connected ? (
                 <Image
@@ -962,3 +1032,27 @@ export default function MainScreen({navigation}) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal: {
+    backgroundColor: '#00091F',
+    padding: 20,
+    width: 327,
+    height: 281,
+    borderRadius: 10,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
