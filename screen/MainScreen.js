@@ -728,6 +728,15 @@ export default function MainScreen({navigation}) {
                   </View>
                 </View>
               ) : (
+                <Pressable
+                
+                onPress={()=>{
+                  navigation.navigate("Location")
+                }}
+                >
+
+           
+
                 <View
                   style={{
                     width: '100%',
@@ -802,6 +811,8 @@ export default function MainScreen({navigation}) {
                     />
                   </View>
                 </View>
+
+                </Pressable>
               )}
               {connected ? (
                 <View>

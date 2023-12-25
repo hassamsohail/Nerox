@@ -24,6 +24,7 @@ import Feedback from './screen/Feedback';
 import FeedbackDetail from './screen/Feedbackdetail';
 import ConnectionReport from './screen/ConnectionReport';
 import Serverlist from './screen/Serverlist';
+import Location from './screen/Location';
 
 const Stack = createNativeStackNavigator();
 const SplashScreenComponent = () => {
@@ -248,6 +249,14 @@ function App() {
             
             name="Serverlist"
             component={Serverlist}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            
+            name="Location"
+            component={Location}
           />
         </Stack.Navigator>
       </NavigationContainer>

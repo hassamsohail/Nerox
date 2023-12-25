@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 export default function Subscription({navigation}) {
-  const [selectedBox, setSelectedBox] = useState(null);
+  const [selectedBox, setSelectedBox] = useState(1);
   const boxes = [
     {
       months: 6,
