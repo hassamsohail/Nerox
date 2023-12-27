@@ -52,7 +52,7 @@ export default function MainScreen({navigation}) {
     setConnectingTime(0);
     closeModal();
 
-    navigation.navigate("ConnectionReport")
+    navigation.navigate('ConnectionReport');
   };
   return (
     <View
@@ -590,7 +590,7 @@ export default function MainScreen({navigation}) {
                 </Text>
                 <Pressable
                   onPress={() => {
-                    navigation.navigate("Subscription");
+                    navigation.navigate('Subscription');
                   }}>
                   <View
                     style={{
@@ -652,166 +652,165 @@ export default function MainScreen({navigation}) {
 
               {/* Smart Location component */}
               {!connected ? (
-                <View
-                  style={{
-                    width: '100%',
-
-                    height: 88,
-                    backgroundColor: 'rgba(46, 46, 61, 0.5)',
-                    borderWidth: 1,
-                    borderColor: '#202023',
-                    marginTop: -25,
-                    borderRadius: 20,
-                    padding: 12,
+                <Pressable
+                  onPress={() => {
+                    navigation.navigate('Location');
                   }}>
                   <View
                     style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
+                      width: '100%',
+
+                      height: 88,
+                      backgroundColor: 'rgba(46, 46, 61, 0.5)',
+                      borderWidth: 1,
+                      borderColor: '#202023',
+                      marginTop: -25,
+                      borderRadius: 20,
+                      padding: 12,
                     }}>
                     <View
                       style={{
                         flexDirection: 'row',
-                        // justifyContent:"space-between",
+                        justifyContent: 'space-between',
                         alignItems: 'center',
                       }}>
                       <View
                         style={{
-                          height: 64,
-                          width: 64,
-                          borderRadius: 12,
-                          backgroundColor: '#00091F',
-                          justifyContent: 'center',
+                          flexDirection: 'row',
+                          // justifyContent:"space-between",
                           alignItems: 'center',
                         }}>
-                        <Image
-                          source={require('../assets/Defaultflag.png')}
+                        <View
                           style={{
-                            width: 48,
-                            height: 30,
-                          }}
-                        />
-                      </View>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          marginLeft: 10,
-                        }}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            fontWeight: '400',
-                            color: '#fff',
+                            height: 64,
+                            width: 64,
+                            borderRadius: 12,
+                            backgroundColor: '#00091F',
+                            justifyContent: 'center',
+                            alignItems: 'center',
                           }}>
-                          Smart Location
-                        </Text>
+                          <Image
+                            source={require('../assets/Defaultflag.png')}
+                            style={{
+                              width: 48,
+                              height: 30,
+                            }}
+                          />
+                        </View>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            marginLeft: 10,
+                          }}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '400',
+                              color: '#fff',
+                            }}>
+                            Smart Location
+                          </Text>
 
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            fontWeight: '100',
-                            color: '#A1A1AC',
-                            marginTop: 4,
-                          }}>
-                          Fastest Server
-                        </Text>
+                          <Text
+                            style={{
+                              fontSize: 12,
+                              fontWeight: '100',
+                              color: '#A1A1AC',
+                              marginTop: 4,
+                            }}>
+                            Fastest Server
+                          </Text>
+                        </View>
                       </View>
+                      <Image
+                        source={require('../assets/Right.png')}
+                        style={{
+                          width: 24,
+                          height: 24,
+                        }}
+                      />
                     </View>
-                    <Image
-                      source={require('../assets/Right.png')}
-                      style={{
-                        width: 24,
-                        height: 24,
-                      }}
-                    />
                   </View>
-                </View>
+                </Pressable>
               ) : (
                 <Pressable
-                
-                onPress={()=>{
-                  navigation.navigate("Location")
-                }}
-                >
-
-           
-
-                <View
-                  style={{
-                    width: '100%',
-                    height: 88,
-                    backgroundColor: 'rgba(46, 46, 61, 0.5)',
-                    borderWidth: 1,
-                    borderColor: '#202023',
-                    marginTop: 20,
-                    borderRadius: 20,
-                    padding: 12,
+                  onPress={() => {
+                    navigation.navigate('Location');
                   }}>
                   <View
                     style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
+                      width: '100%',
+                      height: 88,
+                      backgroundColor: 'rgba(46, 46, 61, 0.5)',
+                      borderWidth: 1,
+                      borderColor: '#202023',
+                      marginTop: 20,
+                      borderRadius: 20,
+                      padding: 12,
                     }}>
                     <View
                       style={{
                         flexDirection: 'row',
-                        // justifyContent:"space-between",
+                        justifyContent: 'space-between',
                         alignItems: 'center',
                       }}>
                       <View
                         style={{
-                          height: 64,
-                          width: 64,
-                          borderRadius: 12,
-                          backgroundColor: '#00091F',
-                          justifyContent: 'center',
+                          flexDirection: 'row',
+                          // justifyContent:"space-between",
                           alignItems: 'center',
                         }}>
-                        <Image
-                          source={require('../assets/US.png')}
+                        <View
                           style={{
-                            width: 48,
-                            height: 30,
-                          }}
-                        />
+                            height: 64,
+                            width: 64,
+                            borderRadius: 12,
+                            backgroundColor: '#00091F',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}>
+                          <Image
+                            source={require('../assets/US.png')}
+                            style={{
+                              width: 48,
+                              height: 30,
+                            }}
+                          />
+                        </View>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            marginLeft: 10,
+                          }}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '400',
+                              color: '#fff',
+                            }}>
+                            United States
+                          </Text>
+
+                          <Text
+                            style={{
+                              fontSize: 12,
+                              fontWeight: '100',
+                              color: '#A1A1AC',
+                              marginTop: 4,
+                            }}>
+                            IP 37.120.202.186
+                          </Text>
+                        </View>
                       </View>
-                      <View
+                      <Image
+                        source={require('../assets/Right.png')}
                         style={{
-                          justifyContent: 'center',
-                          marginLeft: 10,
-                        }}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            fontWeight: '400',
-                            color: '#fff',
-                          }}>
-                          United States
-                        </Text>
-
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            fontWeight: '100',
-                            color: '#A1A1AC',
-                            marginTop: 4,
-                          }}>
-                          IP 37.120.202.186
-                        </Text>
-                      </View>
+                          width: 24,
+                          height: 24,
+                        }}
+                      />
                     </View>
-                    <Image
-                      source={require('../assets/Right.png')}
-                      style={{
-                        width: 24,
-                        height: 24,
-                      }}
-                    />
                   </View>
-                </View>
-
                 </Pressable>
               )}
               {connected ? (
@@ -920,11 +919,15 @@ export default function MainScreen({navigation}) {
                 </View>
               ) : null}
               <View style={{height: 60}} />
-
-              {/* Disconnected button */}
-              {!connected ? (
-                <View>
-                  <Pressable
+              <View
+                style={
+                  {
+                    // position:"absolute", bottom:-100, alignSelf:"center"
+                  }
+                }>
+                {/* Disconnected button */}
+                {!connected ? (
+                  <TouchableOpacity
                     onPress={() => {
                       // Logic to handle connecting
                       setConnected(true);
@@ -938,13 +941,11 @@ export default function MainScreen({navigation}) {
                         height: 260,
                       }}
                     />
-                  </Pressable>
-                </View>
-              ) : (
-                <View>
-                  <View style={{height: 12}} />
-
-                  <Pressable onPress={handleDisconnect}>
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    style={{marginTop: 12}}
+                    onPress={handleDisconnect}>
                     <Image
                       source={require('../assets/Connected.png')}
                       style={{
@@ -954,88 +955,87 @@ export default function MainScreen({navigation}) {
                         height: 260,
                       }}
                     />
-                  </Pressable>
-                  <Modal
-                    transparent={true}
-                    animationType="slide"
-                    visible={modalVisible}
-                    onRequestClose={closeModal}>
-                    <View style={styles.overlay}>
-                      <View style={styles.modal}>
-                        <Text
-                          style={{
-                            fontSize: 24,
-                            fontWeight: '400',
-                            color: '#fff',
-                          }}>
-                          Disconnect
-                        </Text>
-                        <View style={{height: 20}} />
+                  </TouchableOpacity>
+                )}
+                <Modal
+                  transparent={true}
+                  animationType="slide"
+                  visible={modalVisible}
+                  onRequestClose={closeModal}>
+                  <View style={styles.overlay}>
+                    <View style={styles.modal}>
+                      <Text
+                        style={{
+                          fontSize: 24,
+                          fontWeight: '400',
+                          color: '#fff',
+                        }}>
+                        Disconnect
+                      </Text>
+                      <View style={{height: 20}} />
 
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontWeight: '200',
+                          color: '#A1A1AC',
+                        }}>
+                        Are you sure to disconnect?
+                      </Text>
+                      <View style={{height: 20}} />
+
+                      <Pressable
+                        style={{
+                          width: 279,
+                          alignSelf: 'center',
+                        }}
+                        onPress={confirmDisconnect}>
+                        <ImageBackground
+                          source={require('../assets/Dis.png')}
+                          style={{
+                            width: '100%',
+                            height: 56,
+
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            alignSelf: 'center',
+                          }}></ImageBackground>
+                      </Pressable>
+                      <View style={{height: 30}} />
+                      <Pressable onPress={closeModal}>
                         <Text
                           style={{
                             fontSize: 14,
-                            fontWeight: '200',
-                            color: '#A1A1AC',
+                            fontWeight: '400',
+                            color: '#fff',
                           }}>
-                          Are you sure to disconnect?
+                          Cancel
                         </Text>
-                        <View style={{height: 20}} />
-
-                        <Pressable
-                          style={{
-                            width: 279,
-                            alignSelf: 'center',
-                          }}
-                          onPress={confirmDisconnect}>
-                          <ImageBackground
-                            source={require('../assets/Dis.png')}
-                            style={{
-                              width: '100%',
-                              height: 56,
-
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              alignSelf: 'center',
-                            }}></ImageBackground>
-                        </Pressable>
-                        <View style={{height: 30}} />
-                        <Pressable onPress={closeModal}>
-                          <Text
-                            style={{
-                              fontSize: 14,
-                              fontWeight: '400',
-                              color: '#fff',
-                            }}>
-                            Cancel
-                          </Text>
-                        </Pressable>
-                      </View>
+                      </Pressable>
                     </View>
-                  </Modal>
-                </View>
-              )}
-
-              {/* Status Disconnected (Tap to Connect) */}
-              {!connected ? (
-                <Image
-                  source={require('../assets/Tap_to_Connect.png')}
-                  style={{
-                    width: 136,
-                    alignSelf: 'center',
-                    height: 20,
-                  }}
-                />
-              ) : (
-                <Image
-                  source={require('../assets/Connected_Status.png')}
-                  style={{
-                    width: 105,
-                    alignSelf: 'center',
-                    height: 20,
-                  }}
-                />
-              )}
+                  </View>
+                </Modal>
+                {/* Status Disconnected (Tap to Connect) */}
+                {!connected ? (
+                  <Image
+                    source={require('../assets/Tap_to_Connect.png')}
+                    style={{
+                      width: 136,
+                      alignSelf: 'center',
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require('../assets/Connected_Status.png')}
+                    style={{
+                      width: 105,
+                      alignSelf: 'center',
+                      height: 20,
+                    }}
+                  />
+                )}
+              </View>
             </View>
           </ImageBackground>
         </Animated.View>

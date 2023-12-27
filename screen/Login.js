@@ -169,7 +169,7 @@ export default function Login({navigation}) {
           </Text>
           </Pressable>
           </View>
-          <View style={{height: 60}} />
+          <View style={{height: 100}} />
           <Pressable
             style={{
               width: 327,
@@ -200,97 +200,26 @@ export default function Login({navigation}) {
           </Pressable>
           <View style={{height: 20}} />
 
-          <View
+          <Pressable
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              paddingHorizontal: 5,
+              width: 327,
+            }}
+            onPress={() => {
+              navigation.navigate('MainScreen');
             }}>
-            <View
+            <ImageBackground
+              source={require('../assets/Googlebtn.png')}
               style={{
-                width: 100,
-                height: 1,
-                backgroundColor: '#E8ECF4',
-              }}></View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#6A707C',
-                fontWeight: '600',
-                textAlign: 'center',
-              }}>
-            Or Sign In with
-            </Text>
-            <View
-              style={{
-                width: 100,
-                height: 1,
-                backgroundColor: '#E8ECF4',
-              }}></View>
-          </View>
-          <View style={{height: 20}} />
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              paddingHorizontal: 5,
-            }}>
-            <View
-              style={{
-                alignItems: 'center',
+                width: '97%',
+                height: 52.5,
+
                 justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
-              }}>
-              <Image
-                source={require('../assets/facebook.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-            <View
-              style={{
                 alignItems: 'center',
-                justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
+                alignSelf: 'center',
               }}>
-              <Image
-                source={require('../assets/google.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
-              }}>
-              <Image
-                source={require('../assets/apple.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-          </View>
+           
+            </ImageBackground>
+          </Pressable> 
           <View style={{height: 20}} />
           <Pressable
             onPress={() => {

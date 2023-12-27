@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,11 @@ import {
 
 export default function Location({navigation}) {
   const data = [
+    {
+      label: 'Auto Select',
+      ms: 'Fastest Server',
+      image: require('../assets/Defaultflag.png'),
+    },
     {
       label: 'United States',
       ms: '35 ms - Miami',
@@ -52,7 +57,13 @@ export default function Location({navigation}) {
       ms: '11 Locations',
       image: require('../assets/CA.png'),
     },
-
+    {
+      label: 'United States',
+      ms: '11 Locations',
+      image: require('../assets/US.png'),
+    },
+    
+   
     // Add more data items as needed
   ];
   const [selectedItem, setSelectedItem] = useState(0);
@@ -60,18 +71,21 @@ export default function Location({navigation}) {
   const handlePress = index => {
     setSelectedItem(index);
   };
+  
   return (
     <ScrollView
-      style={{
-        flex: 1,
-        backgroundColor: '#00091F',
-      }}>
+    contentContainerStyle={{
+      flexGrow: 1,
+      // alignItems: 'center',
+      backgroundColor: '#00091F',
+    }}>
+   
       <View
         style={{
-          flexGrow: 1,
+          // flexGrow: 1,
           //   height: Dimensions.get('window').height,
 
-          backgroundColor: '#00091F',
+          // backgroundColor: '#00091F',
         }}>
         <View
           style={{
@@ -288,7 +302,7 @@ export default function Location({navigation}) {
 
                         <Text
                           style={{
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: '200',
                             color: '#fff',
                             marginLeft: 5,
@@ -336,7 +350,7 @@ export default function Location({navigation}) {
             <View style={{height: 10}} />
 
             {data1.map((item, index) => (
-              <Pressable>
+              <Pressable key={index}>
                 <View
                   key={index}
                   style={{
@@ -414,47 +428,52 @@ export default function Location({navigation}) {
                 </View>
               </Pressable>
             ))}
+            <View style={{height: 20}} />
+
           </View>
         </View>
 
-        <View
-        style={{
-            width:"100%",
-            height:93, backgroundColor:"#171B2E", justifyContent:"center", alignItems:"center", position:"absolute", bottom:0
-        }}
-        >
-<Pressable
-              style={{
-                width: 327,
-              }}
-              onPress={() => {
-                navigation.navigate('MainScreen');
-              }}>
-              <ImageBackground
-                source={require('../assets/btn.png')}
-                style={{
-                  width: '100%',
-                  height: 68,
-
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignSelf: 'center',
-                  flexDirection: 'row',
-                }}>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#fff',
-                    fontWeight: '500',
-                    // textAlign: 'center',
-                  }}>
-          Upgrade to Premium
-                </Text>
-              
-              </ImageBackground>
-            </Pressable>
-        </View>
       </View>
+        <View
+          style={{
+            width: '100%',
+            height: 93,
+            backgroundColor: '#171B2E',
+            justifyContent: 'center',
+            alignItems: 'center',
+            // position: 'absolute',
+            // bottom: 0,
+          }}>
+          <Pressable
+            style={{
+              width: 327,
+            }}
+            onPress={() => {
+              navigation.navigate('MainScreen');
+            }}>
+            <ImageBackground
+              source={require('../assets/btn.png')}
+              style={{
+                width: '100%',
+                height: 68,
+
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'center',
+                flexDirection: 'row',
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#fff',
+                  fontWeight: '500',
+                  // textAlign: 'center',
+                }}>
+                Upgrade to Premium
+              </Text>
+            </ImageBackground>
+          </Pressable>
+        </View>
     </ScrollView>
   );
 }

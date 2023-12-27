@@ -158,7 +158,8 @@ export default function CreateAccount({navigation}) {
               borderColor: '#fff',
             }}
           />
-          <View style={{height: 60}} />
+          <View style={{height: 100}} />
+
           <Pressable
             style={{
               width: 327,
@@ -188,111 +189,36 @@ export default function CreateAccount({navigation}) {
             </ImageBackground>
           </Pressable>
           <View style={{height: 20}} />
-
-          <View
+          <Pressable
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              paddingHorizontal: 5,
+              width: 327,
+            }}
+            onPress={() => {
+              navigation.navigate('MainScreen');
+            }}>
+            <ImageBackground
+              source={require('../assets/Googlebtn.png')}
+              style={{
+                width: '97%',
+                height: 52.5,
+
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'center',
+              }}></ImageBackground>
+          </Pressable>
+          <View style={{height: 20}} />
+          <Pressable
+            onPress={() => {
+              navigation.navigate('Login');
             }}>
             <View
               style={{
-                width: 100,
-                height: 1,
-                backgroundColor: '#E8ECF4',
-              }}></View>
-            <Text
-              style={{
-                fontSize: 14,
-                color: '#6A707C',
-                fontWeight: '600',
-                textAlign: 'center',
-              }}>
-              Or Register with
-            </Text>
-            <View
-              style={{
-                width: 100,
-                height: 1,
-                backgroundColor: '#E8ECF4',
-              }}></View>
-          </View>
-          <View style={{height: 20}} />
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              paddingHorizontal: 5,
-            }}>
-            <View
-              style={{
+                flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
               }}>
-              <Image
-                source={require('../assets/facebook.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
-              }}>
-              <Image
-                source={require('../assets/google.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 100,
-                paddingHorizontal: 5,
-                height: 56,
-                borderRadius: 8,
-                backgroundColor: '#E8ECF4',
-              }}>
-              <Image
-                source={require('../assets/apple.png')}
-                style={{
-                  height: 26,
-                  width: 26,
-                }}></Image>
-            </View>
-          </View>
-          <View style={{height: 20}} />
-<Pressable
-onPress={()=>{
-  navigation.navigate("Login")
-}}
->
-
-          <View
-          style={{
-            flexDirection:"row",alignItems:"center", justifyContent:"center"
-          }}
-          >
- <Text
+              <Text
                 style={{
                   fontSize: 14,
                   color: '#fff',
@@ -307,13 +233,12 @@ onPress={()=>{
                   color: '#6B8F04',
                   fontWeight: '200',
                   textAlign: 'center',
-                  marginLeft:5
+                  marginLeft: 5,
                 }}>
-             Sign In
+                Sign In
               </Text>
-          </View>
-            
-</Pressable>
+            </View>
+          </Pressable>
         </View>
       </View>
     </ScrollView>
